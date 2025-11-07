@@ -112,6 +112,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit, movies, loading = fal
                     onChange={(event, newValue) => setRating(newValue)}
                     disabled={loading}
                     size="medium"
+                    aria-label="Rate this movie from 1 to 5 stars"
                 />
 
 

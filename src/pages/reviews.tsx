@@ -1,9 +1,9 @@
 import { Alert, Box, CircularProgress, Container, Grid, Typography } from "@mui/material";
 import ReviewCard from "../features/example/components/ReviewCard";
-import { useAppSelector } from "../state/store"
+import { useAppDispatch, useAppSelector } from "../state/store"
 import { createReview, fetchMovies, fetchReviews } from "../features/example/state/movieSlice"
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+
 import ReviewForm from "../features/example/components/ReviwForm";
 
 
@@ -12,7 +12,7 @@ const ReviewsPage: React.FC = () => {
     const { movies, loading, error, reviews } = useAppSelector((state) => state.movies)
 
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         dispatch(fetchMovies())
@@ -41,7 +41,6 @@ const ReviewsPage: React.FC = () => {
     }
 
     const handleReviewSubmit = (reviewData: any) => {
-        console.log('submit')
         dispatch(createReview(reviewData))
     }
 

@@ -22,7 +22,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
           component="img"
           height="140"
           image={movieImage}
-          alt="green iguana"
+          alt={`${movieTitle || title} poster`}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -37,7 +37,13 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Rating name="read-only" value={rating || 0} readOnly size="small" />
+        <Rating
+          name="rating"
+          value={rating || 0}
+          readOnly
+          size="small"
+          aria-label={`Rating: ${rating} out of 5 stars`}
+        />
         <Typography variant="body2" sx={{ ml: 1 }} color="text.secondary">
           {rating}/5
         </Typography>
