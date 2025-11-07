@@ -7,14 +7,13 @@ interface ReviewCardProps {
   title: string;
   body?: string;
   rating?: number;
-  releaseDate: string;
   movieImage?: string;
   userName: string
 
 }
 
 const ReviewCard: React.FC<ReviewCardProps> = ({
-  title, body, rating, movieImage, userName, releaseDate
+  title, body, rating, movieImage, userName
 }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -32,9 +31,9 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             {body}
           </Typography>
-          <Typography variant="body2" color="text.secondary" gutterBottom>
+         {/*  <Typography variant="body2" color="text.secondary" gutterBottom>
             Release Date: {releaseDate}
-          </Typography>
+          </Typography> */}
         </CardContent>
       </CardActionArea>
       <CardActions>

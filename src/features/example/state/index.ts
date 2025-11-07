@@ -2,6 +2,6 @@ export { actions as exampleActions } from './slice';
 export { default as exampleReducer } from './slice';
 import { combineEpics } from 'redux-observable';
 import { exampleEpic, exampleAsyncEpic } from './epics';
-import { fetchMoviesEpic } from './moviesEpics';
+import { fetchMoviesEpic,fetchReviewsEpic,createReviewEpic } from './moviesEpics';
 
-export const exampleEpics = combineEpics(exampleEpic, exampleAsyncEpic,fetchMoviesEpic);
+export const exampleEpics = combineEpics(exampleEpic, exampleAsyncEpic,fetchMoviesEpic, fetchReviewsEpic,createReviewEpic);

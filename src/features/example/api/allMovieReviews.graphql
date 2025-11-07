@@ -1,6 +1,6 @@
-mutation CreateMovieReview($input: CreateMovieReviewInput!) {
-  createMovieReview(input: $input) {
-    movieReview {
+query AllMovieReviews {
+  allMovieReviews {
+    nodes {
       id
       title
       body

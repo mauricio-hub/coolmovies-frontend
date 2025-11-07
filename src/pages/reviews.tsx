@@ -1,19 +1,22 @@
 import { Alert, CircularProgress, Container, Typography } from "@mui/material";
 import ReviewCard from "../features/example/components/ReviewCard";
 import { useAppDispatch, useAppSelector } from "../state/store"
-import { fetchMovies } from "../features/example/state/movieSlice"
+import { createReview, fetchMovies ,fetchReviews } from "../features/example/state/movieSlice"
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import ReviewForm from "../features/example/components/ReviwForm";
 
 const ReviewsPage: React.FC = () => {
 
-    const { movies, loading, error } = useAppSelector((state) => state.movies)
+    const { movies, loading, error ,reviews } = useAppSelector((state) => state.movies)
+   
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(fetchMovies())
+        dispatch(fetchReviews())
+
     }, [dispatch])
 
 
@@ -36,8 +39,9 @@ const ReviewsPage: React.FC = () => {
         );
     }
 
-    const handleReviewSubmit =()=>{
+    const handleReviewSubmit =(reviewData:any)=>{
         console.log('submit')
+        dispatch(createReview(reviewData))
     }
 
     return (
@@ -54,18 +58,19 @@ const ReviewsPage: React.FC = () => {
             <p>Here are some reviews from our users:</p>
 
             {
-                movies.length === 0 ? (
+                reviews.length === 0 ? (
                     <Typography>No reviews yet.</Typography>
                 ) : (
                     <>
                         {
-                            movies.map((movie) => (
+                            reviews.map((item) => (
                                 <ReviewCard
-                                    key={movie.id}
-                                    title={movie.title}
-                                    movieImage={movie.imgUrl}
-                                    userName={movie.userByUserCreatorId?.name || "Anonymous"}
-                                    releaseDate={movie.releaseDate}
+                                    
+                                    key={item.id}
+                                    title={item.title}
+                                    movieImage={item.movieByMovieId?.imgUrl}
+                                    userName={item.userByUserReviewerId?.name || "Anonymous"}
+                                    rating={item.rating}
                                     
                                 />
                             )
