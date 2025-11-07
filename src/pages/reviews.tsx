@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../state/store"
 import { createReview, fetchMovies, fetchReviews } from "../features/example/state/movieSlice"
 import { useEffect } from "react";
 
-import ReviewForm from "../features/example/components/ReviwForm";
+import ReviewForm from "../features/example/components/ReviewForm";
 
 
 const ReviewsPage: React.FC = () => {

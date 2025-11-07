@@ -6,7 +6,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "graphql-types": "graphql-codegen --require dotenv/config --config src/codegen.ts dotenv_config_path=./.env.development"
+    "graphql-types": "graphql-codegen --require dotenv/config --config src/codegen.ts dotenv_config_path=./.env.development",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@apollo/client": "^3.12.10",
@@ -29,15 +31,20 @@
   },
   "devDependencies": {
     "@babel/core": "^7.26.7",
-    "@types/node": "22.13.1",
-    "@types/react": "19.0.8",
-    "eslint": "9.19.0",
-    "eslint-config-next": "15.1.6",
-    "typescript": "5.7.3",
     "@graphql-codegen/cli": "5.0.2",
     "@graphql-codegen/introspection": "4.0.3",
     "@graphql-codegen/typescript": "^4.0.9",
     "@graphql-codegen/typescript-operations": "4.2.3",
-    "@graphql-codegen/typescript-react-apollo": "4.3.2"
+    "@graphql-codegen/typescript-react-apollo": "4.3.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "22.13.1",
+    "@types/react": "19.0.8",
+    "eslint": "9.19.0",
+    "eslint-config-next": "15.1.6",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "typescript": "5.7.3"
   }
 }
