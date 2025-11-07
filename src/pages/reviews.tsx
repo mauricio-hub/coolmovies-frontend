@@ -1,4 +1,4 @@
-import { Alert, CircularProgress, Container, Paper, Typography } from "@mui/material";
+import { Alert, Box, CircularProgress, Container, Grid, Typography } from "@mui/material";
 import ReviewCard from "../features/example/components/ReviewCard";
 import { useAppSelector } from "../state/store"
 import { createReview, fetchMovies, fetchReviews } from "../features/example/state/movieSlice"
@@ -46,28 +46,38 @@ const ReviewsPage: React.FC = () => {
     }
 
     return (
-        <Container>
-           
-            <Typography variant="h3" component="h1" >
-                Movie Reviews
-            </Typography>
+        <Container maxWidth="xl" sx={{ py: 4 }}>
+            <Box sx={{ mb: 4, textAlign: 'center' }}>
+                <Typography variant="h3" component="h1" >
+                    Movie Reviews
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                    Share your thoughts about your favorite movies
+                </Typography>
+            </Box>
 
-            <ReviewForm
-                onSubmit={handleReviewSubmit}
-                movies={movies}
-                loading={false}
-            />
-            <p>Here are some reviews from our users:</p>
+
+            <Box sx={{ mb: 6, display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ width: '100%', maxWidth: 600 }}>
+                    <ReviewForm
+                        onSubmit={handleReviewSubmit}
+                        movies={movies}
+                        loading={false}
+                    />
+                </Box>
+            </Box>
+
 
             {
                 reviews.length === 0 ? (
                     <Typography>No reviews yet.</Typography>
                 ) : (
-                    <>
-                        {
-                            reviews.map((item) => (
+
+                    <Grid container spacing={3}>
+
+                        {reviews.map((item) => (
+                            <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
                                 <ReviewCard
-                                    key={item.id}
                                     title={item.title}
                                     body={item.body}
                                     movieImage={item.movieByMovieId?.imgUrl}
@@ -75,11 +85,11 @@ const ReviewsPage: React.FC = () => {
                                     userName={item.userByUserReviewerId?.name || "Anonymous"}
                                     rating={item.rating}
                                 />
-                            )
-                            )}
-                    </>
-                )
-            }
+                            </Grid>
+                        ))}
+                    </Grid>
+
+                )}
 
         </Container>
     );
