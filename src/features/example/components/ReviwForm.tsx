@@ -118,10 +118,10 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit, movies, loading = fal
                 <Button
                     type="submit"
                     variant="contained"
-                    color="primary"
+             
                     fullWidth
                     disabled={loading}
-                    css={styles.submitButton}
+                    color="primary"
                 >
                     {loading ? 'Submitting...' : 'Submit Review'}
                 </Button>

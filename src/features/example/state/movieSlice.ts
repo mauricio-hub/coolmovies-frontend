@@ -90,10 +90,10 @@ const movieSlice = createSlice({
             rating: number;
         }>) => {
             state.reviewsLoading = true;
-            state.reviewsError = null
+            
         },
-        createReviewSucces: (state, action: PayloadAction<Review>) => {
-            state.reviews.push(action.payload);
+        createReviewSuccess: (state, action: PayloadAction<Review>) => {
+            state.reviews.unshift(action.payload);
             state.reviewsLoading = false;
         },
         createReviewFailure: (state, action: PayloadAction<string>) => {
@@ -109,6 +109,6 @@ const movieSlice = createSlice({
 })
 
 
-export const { fetchMovies, fetchMoviesSuccess, fetchMoviesFailure, fetchReviews, fetchReviewsFailure, fetchReviewsSuccess, createReview, createReviewFailure, createReviewSucces } = movieSlice.actions;
+export const { fetchMovies, fetchMoviesSuccess, fetchMoviesFailure, fetchReviews, fetchReviewsFailure, fetchReviewsSuccess, createReview, createReviewFailure, createReviewSuccess } = movieSlice.actions;
 export default movieSlice.reducer;
 

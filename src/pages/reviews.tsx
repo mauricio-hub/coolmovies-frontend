@@ -1,15 +1,16 @@
-import { Alert, CircularProgress, Container, Typography } from "@mui/material";
+import { Alert, CircularProgress, Container, Paper, Typography } from "@mui/material";
 import ReviewCard from "../features/example/components/ReviewCard";
-import { useAppDispatch, useAppSelector } from "../state/store"
-import { createReview, fetchMovies ,fetchReviews } from "../features/example/state/movieSlice"
+import { useAppSelector } from "../state/store"
+import { createReview, fetchMovies, fetchReviews } from "../features/example/state/movieSlice"
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import ReviewForm from "../features/example/components/ReviwForm";
 
+
 const ReviewsPage: React.FC = () => {
 
-    const { movies, loading, error ,reviews } = useAppSelector((state) => state.movies)
-   
+    const { movies, loading, error, reviews } = useAppSelector((state) => state.movies)
+
 
     const dispatch = useDispatch()
 
@@ -39,18 +40,19 @@ const ReviewsPage: React.FC = () => {
         );
     }
 
-    const handleReviewSubmit =(reviewData:any)=>{
+    const handleReviewSubmit = (reviewData: any) => {
         console.log('submit')
         dispatch(createReview(reviewData))
     }
 
     return (
         <Container>
+           
             <Typography variant="h3" component="h1" >
                 Movie Reviews
             </Typography>
-            
-            <ReviewForm 
+
+            <ReviewForm
                 onSubmit={handleReviewSubmit}
                 movies={movies}
                 loading={false}
@@ -65,13 +67,13 @@ const ReviewsPage: React.FC = () => {
                         {
                             reviews.map((item) => (
                                 <ReviewCard
-                                    
+
                                     key={item.id}
                                     title={item.title}
                                     movieImage={item.movieByMovieId?.imgUrl}
                                     userName={item.userByUserReviewerId?.name || "Anonymous"}
                                     rating={item.rating}
-                                    
+
                                 />
                             )
                             )}
@@ -84,3 +86,6 @@ const ReviewsPage: React.FC = () => {
 };
 
 export default ReviewsPage;
+
+
+

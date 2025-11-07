@@ -6,6 +6,8 @@ import Head from 'next/head';
 import { createStore } from '../state';
 import { EnhancedStore } from '@reduxjs/toolkit';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from '../theme';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   const [store, setStore] = useState<EnhancedStore | null>(null);
@@ -31,7 +33,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
       <ReduxProvider store={store}>
         <ApolloProvider client={client}>
-          <Component {...pageProps} />
+          <ThemeProvider theme={theme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
         </ApolloProvider>
       </ReduxProvider>
     </>

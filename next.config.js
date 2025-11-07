@@ -7,7 +7,7 @@ module.exports = {
     return [
       {
         source: '/graphql',
-        destination: 'http://localhost:5001/graphql',
+        destination: process.env.CODEGEN_SCHEMA_PATH || 'http://localhost:5001/graphql',
       },
     ];
   },

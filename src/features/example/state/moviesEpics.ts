@@ -1,7 +1,7 @@
 import { Epic } from 'redux-observable';
 import { filter, switchMap } from 'rxjs/operators';
 import { AllMoviesDocument, AllMovieReviewsDocument, CreateMovieReviewDocument } from '../../../generated/graphql';
-import { fetchMovies, fetchMoviesSuccess, fetchMoviesFailure, fetchReviews, fetchReviewsFailure, fetchReviewsSuccess, createReview,createReviewFailure,createReviewSucces } from './movieSlice';
+import { fetchMovies, fetchMoviesSuccess, fetchMoviesFailure, fetchReviews, fetchReviewsFailure, fetchReviewsSuccess, createReview,createReviewFailure,createReviewSuccess } from './movieSlice';
 import { RootState } from '../../../state/store';
 import { EpicDependencies } from '../../../state/types';
 
@@ -73,7 +73,7 @@ export const createReviewEpic: Epic<
         });
 
         console.log('Review....', result.data.createMovieReview.movieReview);
-        return createReviewSucces(result.data.createMovieReview.movieReview);
+        return createReviewSuccess(result.data.createMovieReview.movieReview);
       } catch (err) {
         console.error('Error creating review:', err);
         return createReviewFailure((err as Error).message);
