@@ -8,12 +8,12 @@ interface ReviewCardProps {
   body?: string;
   rating?: number;
   movieImage?: string;
-  userName: string
-
+  movieTitle?: string;
+  userName: string;
 }
 
 const ReviewCard: React.FC<ReviewCardProps> = ({
-  title, body, rating, movieImage, userName
+  title, body, rating, movieImage, movieTitle, userName
 }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -37,12 +37,12 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Rating name="read-only" value={3} readOnly size="small" />
+        <Rating name="read-only" value={rating || 0} readOnly size="small" />
         <Typography variant="body2" sx={{ ml: 1 }} color="text.secondary">
           {rating}/5
         </Typography>
         <Typography variant="body2" color="text.secondary" gutterBottom>
-          Movie: {title} | By: {userName}
+          Movie: {movieTitle || 'Unknown'} | By: {userName}
         </Typography>
       </CardActions>
     </Card>

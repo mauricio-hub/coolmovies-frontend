@@ -67,13 +67,13 @@ const ReviewsPage: React.FC = () => {
                         {
                             reviews.map((item) => (
                                 <ReviewCard
-
                                     key={item.id}
                                     title={item.title}
+                                    body={item.body}
                                     movieImage={item.movieByMovieId?.imgUrl}
+                                    movieTitle={item.movieByMovieId?.title}
                                     userName={item.userByUserReviewerId?.name || "Anonymous"}
                                     rating={item.rating}
-
                                 />
                             )
                             )}
