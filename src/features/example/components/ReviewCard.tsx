@@ -31,9 +31,6 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             {body}
           </Typography>
-         {/*  <Typography variant="body2" color="text.secondary" gutterBottom>
-            Release Date: {releaseDate}
-          </Typography> */}
         </CardContent>
       </CardActionArea>
       <CardActions>

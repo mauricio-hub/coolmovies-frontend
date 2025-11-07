@@ -9,8 +9,6 @@ import {
     FormControl,
     InputLabel
 } from '@mui/material';
-import { css } from '@emotion/react';
-
 
 
 interface ReviewFormProps {
@@ -34,15 +32,11 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit, movies, loading = fal
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        if (!movieId || !title || !body || !rating) {
-            alert("error")
-            return
-        }
         onSubmit({
             movieId,
             title,
             body,
-            rating
+            rating: rating || 1
         })
 
         setMovieId('')
@@ -51,6 +45,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit, movies, loading = fal
         setRating(0)
     }
 
+    const isFormValid = movieId && title && body && rating && rating > 0;
 
     return (
         <>
@@ -107,7 +102,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit, movies, loading = fal
                 <Rating
                     name="rating"
                     value={rating}
-                    onChange={(event, newValue) => setRating(newValue)}
+                    onChange={(event, newValue) => setRating(newValue || 1)}
                     disabled={loading}
                     size="medium"
                     aria-label="Rate this movie from 1 to 5 stars"
@@ -119,7 +114,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit, movies, loading = fal
                     variant="contained"
              
                     fullWidth
-                    disabled={loading}
+                    disabled={loading || !isFormValid}
                     color="primary"
                 >
                     {loading ? 'Submitting...' : 'Submit Review'}
@@ -131,18 +126,5 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit, movies, loading = fal
 
 }
 
-const styles = {
-    container: css({
-        padding: '24px',
-        marginBottom: '32px',
-        maxWidth: '600px',
-    }),
-    formGroup: css({
-        marginBottom: '20px',
-    }),
-    submitButton: css({
-        marginTop: '8px',
-    }),
-};
 
 export default ReviewForm;
