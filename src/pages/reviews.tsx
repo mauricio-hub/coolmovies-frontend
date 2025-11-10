@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../state/store"
 import { createReview, fetchMovies, fetchReviews } from "../features/example/state/movieSlice"
 import { useEffect } from "react";
 
-import ReviewForm from "../features/example/components/ReviewForm";
+import ReviewForm, { ReviewFormData } from "../features/example/components/ReviewForm";
 
 
 const ReviewsPage: React.FC = () => {
@@ -40,7 +40,7 @@ const ReviewsPage: React.FC = () => {
         );
     }
 
-    const handleReviewSubmit = (reviewData: any) => {
+    const handleReviewSubmit = (reviewData: ReviewFormData) => {
         dispatch(createReview(reviewData))
     }
 
