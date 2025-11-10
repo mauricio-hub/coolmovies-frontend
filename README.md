@@ -1,9 +1,6 @@
 # Important Note
 
-When submitting, please add the following user(s) as collaborators to your **private** repo:
 
-- GitHub `@SamuelCarlos`
-- Gitlab `@samuel.xavier`
 
 # Coolmovies web challenge
 
